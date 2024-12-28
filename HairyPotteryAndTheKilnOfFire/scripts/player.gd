@@ -17,22 +17,22 @@ func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	
 func player_movement(delta: float) -> void:
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") || Input.is_action_pressed("d"):
 		current_dir = "right"
 		play_anim(1)
 		velocity.x = speed
 		velocity.y = 0
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_left") || Input.is_action_pressed("a"):
 		play_anim(1)
 		current_dir = "left"
 		velocity.x = -speed
 		velocity.y = 0
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("ui_down") || Input.is_action_pressed("s"):
 		play_anim(1)
 		current_dir = "down"
 		velocity.x = 0
 		velocity.y = speed
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_pressed("ui_up") || Input.is_action_pressed("w"):
 		play_anim(1)
 		current_dir = "up"
 		velocity.x = 0

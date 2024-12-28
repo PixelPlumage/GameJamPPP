@@ -13,4 +13,4 @@ func _on_exit_body_entered(body: Node2D) -> void:
 func switch_level() -> void:
 	Global.finish_change_scene()
 	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	SceneLoader.load_scene("res://scenes/world.tscn")
