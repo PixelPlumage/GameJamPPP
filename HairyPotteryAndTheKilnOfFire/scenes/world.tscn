@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://0qcuicy68qvw"]
+[gd_scene load_steps=14 format=4 uid="uid://0qcuicy68qvw"]
 
 [ext_resource type="Texture2D" uid="uid://bfbl5ye6vq57c" path="res://art/tilesets/plains.png" id="1_1x2c8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wy231"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bnjk2gyt56wcv" path="res://scenes/player.tscn" id="4_aw1le"]
 [ext_resource type="Texture2D" uid="uid://bw6mn5yp4vtgb" path="res://art/tilesets/merged.png" id="5_v77yy"]
 [ext_resource type="PackedScene" uid="uid://dygt1fvhluoka" path="res://scenes/rock.tscn" id="7_4epay"]
-[ext_resource type="PackedScene" uid="uid://b7ivi7sxsxedh" path="res://scenes/scene_transition_animation.tscn" id="8_p0e3k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u1wr"]
 texture = ExtResource("1_1x2c8")
@@ -186,8 +185,6 @@ position = Vector2(187, 101)
 
 [node name="rock2" parent="." instance=ExtResource("7_4epay")]
 position = Vector2(258, 133)
-
-[node name="SceneTransitionAnimation" parent="." instance=ExtResource("8_p0e3k")]
 
 [node name="cliffside_entrance" type="Marker2D" parent="."]
 position = Vector2(207, 0)

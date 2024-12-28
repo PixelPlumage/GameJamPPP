@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://cudjdgrhnw80i"]
+[gd_scene load_steps=7 format=4 uid="uid://cudjdgrhnw80i"]
 
 [ext_resource type="Script" path="res://scripts/cliff_side.gd" id="1_6uhmc"]
 [ext_resource type="Texture2D" uid="uid://bw6mn5yp4vtgb" path="res://art/tilesets/merged.png" id="1_7pv51"]
 [ext_resource type="PackedScene" uid="uid://bnjk2gyt56wcv" path="res://scenes/player.tscn" id="2_dsw1e"]
-[ext_resource type="PackedScene" uid="uid://b7ivi7sxsxedh" path="res://scenes/scene_transition_animation.tscn" id="4_ewupw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bctri"]
 texture = ExtResource("1_7pv51")
@@ -92,7 +91,5 @@ polygon = PackedVector2Array(32, 162, 52, 164, 52, 176, 110, 176, 108, 164, 179,
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
 position = Vector2(80, 170.5)
 shape = SubResource("RectangleShape2D_gj1xb")
-
-[node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_ewupw")]
 
 [connection signal="body_entered" from="exit" to="." method="_on_exit_body_entered"]

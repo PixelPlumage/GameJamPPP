@@ -7,7 +7,7 @@ class_name Player
 var save_file_path = "user://save/"
 var save_file_name = "PlayerSave.tres"
 
-var current_dir: String = "none"
+@export var current_dir: String = "none"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,8 +37,10 @@ func save():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("save"):
 		save()
+		#Global.save_scene()
 	if Input.is_action_just_pressed("load"):
 		load_data()
+		#Global.load_data()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
