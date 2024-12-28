@@ -1,8 +1,7 @@
-[gd_scene load_steps=58 format=3 uid="uid://bnjk2gyt56wcv"]
+[gd_scene load_steps=57 format=3 uid="uid://bnjk2gyt56wcv"]
 
 [ext_resource type="Texture2D" uid="uid://kai5yu2udwpf" path="res://art/characters/player.png" id="1_o1ipr"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_toorh"]
-[ext_resource type="Resource" uid="uid://3pe8kc01chx4" path="res://inventory/player_inv.tres" id="2_vnr40"]
 [ext_resource type="PackedScene" uid="uid://v1byv44xo7jc" path="res://inventory/inv_ui.tscn" id="4_exsqq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ljdwt"]
@@ -421,7 +420,6 @@ height = 10.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_toorh")
-inv = ExtResource("2_vnr40")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_udydd")

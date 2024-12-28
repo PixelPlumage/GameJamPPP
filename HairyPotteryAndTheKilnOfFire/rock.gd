@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player_in_area:
 		if Input.is_action_just_pressed("e"):
-			player.inv.insert(item)
+			Global.playerData.inv.insert(item)
 			queue_free()
 	pass
 
