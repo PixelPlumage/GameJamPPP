@@ -4,6 +4,8 @@ class_name PlayerData
 @export var speed: float = 100.0
 @export var health: int = 100
 
+@export var money: int = 500
+
 @export var SavePos: Vector2
 
 @export var inv: Inv
@@ -19,3 +21,6 @@ func change_health(value: int) -> void:
 	
 func UpdatePos(value: Vector2) -> void:
 	SavePos = value
+	
+func update_money(value: int) -> void:
+	money += value
