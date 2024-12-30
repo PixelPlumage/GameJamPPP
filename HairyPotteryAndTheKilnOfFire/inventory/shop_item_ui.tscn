@@ -1,22 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3k6j6u4crint"]
+[gd_scene load_steps=5 format=3 uid="uid://b3k6j6u4crint"]
 
-[ext_resource type="Texture2D" uid="uid://crduk3nnk5brs" path="res://sprite/icon_clay.png" id="1_ih4mj"]
-[ext_resource type="Texture2D" uid="uid://4fl0tsatg83k" path="res://sprite/icon_coin.png" id="2_vd6yp"]
+[ext_resource type="Script" path="res://inventory/shop_item_ui.gd" id="1_cdgq0"]
+[ext_resource type="Texture2D" uid="uid://ibq0xwqbvou" path="res://sprite/inv_clay.png" id="1_foyot"]
+[ext_resource type="Texture2D" uid="uid://bhkjgqokxtap8" path="res://sprite/coinStack.png" id="2_5dibj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bj3jf"]
 bg_color = Color(0.668308, 0.596174, 0.376656, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 border_color = Color(0.00566115, 0.00566115, 0.00566114, 1)
 border_blend = true
 
 [node name="ShopItem" type="PanelContainer"]
-offset_left = 256.0
-offset_right = 256.0
-offset_bottom = 32.0
+offset_right = 418.0
+offset_bottom = 148.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bj3jf")
+script = ExtResource("1_cdgq0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -32,21 +33,29 @@ theme_override_constants/separation = 50
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("1_ih4mj")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_foyot")
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+[node name="ItemName" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "dasda"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="CostLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "1000"
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="MoneyIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("2_vd6yp")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_5dibj")

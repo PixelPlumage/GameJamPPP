@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dbflvj4o3kt8a"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_5xvv0"]
+[ext_resource type="Texture2D" uid="uid://dgg6rb7p7kkiw" path="res://sprite/inv_Glaze_White.png" id="2_cjfbr"]
+
+[resource]
+script = ExtResource("1_5xvv0")
+name = "glaze_white"
+texture = ExtResource("2_cjfbr")
+value = 1
+cost = 40

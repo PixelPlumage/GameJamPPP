@@ -18,6 +18,7 @@ config/icon="res://art/icon.svg"
 [autoload]
 
 Global="*res://scripts/global.gd"
+SignalBus="*res://scripts/signal_bus.gd"
 
 [input]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dygt1fvhluoka"]
 
 [ext_resource type="Script" path="res://rock.gd" id="1_sfpad"]
-[ext_resource type="Resource" uid="uid://c2bv6krlv280r" path="res://inventory/items/rock.tres" id="2_j1bou"]
-[ext_resource type="Texture2D" uid="uid://ibq0xwqbvou" path="res://sprite/inv_clay.png" id="3_rwskx"]
+[ext_resource type="Resource" uid="uid://c2bv6krlv280r" path="res://inventory/items/clay.tres" id="2_j1bou"]
+[ext_resource type="Texture2D" uid="uid://crduk3nnk5brs" path="res://sprite/icon_clay.png" id="3_wc28c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o85ng"]
 radius = 15.0333
@@ -17,8 +17,8 @@ item = ExtResource("2_j1bou")
 shape = SubResource("CircleShape2D_o85ng")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_rwskx")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_wc28c")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

@@ -2,7 +2,9 @@ extends StaticBody2D
 class_name ShopKeeper
 
 var player: Player
-var Inv: Inv
+@export var inv: Inv
+var shop: ShopUI
+var is_open: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player != null:
 		if Input.is_action_just_pressed("e"):
+			toggle_shop()
 			print("Player interacted")
 	pass
 
@@ -22,6 +25,7 @@ func _on_interactable_area_input_event(viewport: Node, event: InputEvent, shape_
 		if player != null:
 			print("player clicked me in range")
 			print(Global.playerData.money)
+			toggle_shop()
 
 
 func _on_interactable_area_body_entered(body: Node2D) -> void:
@@ -33,3 +37,6 @@ func _on_interactable_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = null
 	pass # Replace with function body.
+	
+func toggle_shop() -> void:
+	SignalBus.toggleShop.emit(inv)

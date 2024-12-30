@@ -1,7 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnrgllsp1mbag"]
+[gd_scene load_steps=24 format=3 uid="uid://dnrgllsp1mbag"]
 
 [ext_resource type="Script" path="res://scripts/shop_keeper.gd" id="1_uy2na"]
 [ext_resource type="Texture2D" uid="uid://bg413k8bgpvac" path="res://sprite/icon_inventory.png" id="2_7d00e"]
+[ext_resource type="Script" path="res://inventory/inventory.gd" id="2_673x1"]
+[ext_resource type="Script" path="res://inventory/Inv_slot.gd" id="3_fbyqo"]
+[ext_resource type="Resource" uid="uid://fc1fwq3q3glh" path="res://inventory/items/glaze_black.tres" id="4_galyy"]
+[ext_resource type="Resource" uid="uid://bbivhncnuft0g" path="res://inventory/items/glaze_blue.tres" id="5_lcxis"]
+[ext_resource type="Resource" uid="uid://ci3s5ddlx3ojj" path="res://inventory/items/glaze_green.tres" id="6_jrydo"]
+[ext_resource type="Resource" uid="uid://bjmug66aye0c0" path="res://inventory/items/glaze_orange.tres" id="7_4ei1a"]
+[ext_resource type="Resource" uid="uid://bar4tfg6u3t0p" path="res://inventory/items/glaze_purple.tres" id="8_15qq1"]
+[ext_resource type="Resource" uid="uid://dj8wvnonxpeog" path="res://inventory/items/glaze_red.tres" id="9_ql20t"]
+[ext_resource type="Resource" uid="uid://dbflvj4o3kt8a" path="res://inventory/items/glaze_white.tres" id="10_3fpgr"]
+[ext_resource type="Resource" uid="uid://lvu8ymsadu5n" path="res://inventory/items/glaze_yellow.tres" id="11_bcj7l"]
+
+[sub_resource type="Resource" id="Resource_78ysr"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("4_galyy")
+count = 0
+
+[sub_resource type="Resource" id="Resource_wvne8"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("5_lcxis")
+count = 0
+
+[sub_resource type="Resource" id="Resource_2mitw"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("6_jrydo")
+count = 0
+
+[sub_resource type="Resource" id="Resource_stj1r"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("7_4ei1a")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ywyhk"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("8_15qq1")
+count = 0
+
+[sub_resource type="Resource" id="Resource_wf1ra"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("9_ql20t")
+count = 0
+
+[sub_resource type="Resource" id="Resource_nohj1"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("10_3fpgr")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ps63q"]
+script = ExtResource("3_fbyqo")
+item = ExtResource("11_bcj7l")
+count = 0
+
+[sub_resource type="Resource" id="Resource_j1as2"]
+script = ExtResource("2_673x1")
+slots = Array[ExtResource("3_fbyqo")]([SubResource("Resource_78ysr"), SubResource("Resource_wvne8"), SubResource("Resource_2mitw"), SubResource("Resource_stj1r"), SubResource("Resource_ywyhk"), SubResource("Resource_wf1ra"), SubResource("Resource_nohj1"), SubResource("Resource_ps63q")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xb2n"]
 size = Vector2(16, 16)
@@ -11,6 +65,7 @@ radius = 14.0
 
 [node name="ShopKeeper" type="StaticBody2D"]
 script = ExtResource("1_uy2na")
+inv = SubResource("Resource_j1as2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
