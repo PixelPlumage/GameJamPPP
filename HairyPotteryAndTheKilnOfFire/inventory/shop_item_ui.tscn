@@ -14,12 +14,15 @@ border_color = Color(0.00566115, 0.00566115, 0.00566114, 1)
 border_blend = true
 
 [node name="ShopItem" type="PanelContainer"]
-offset_right = 418.0
+offset_right = 520.0
 offset_bottom = 148.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_bj3jf")
 script = ExtResource("1_cdgq0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(510, 138)
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -27,6 +30,7 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(608, 138)
 layout_mode = 2
 theme_override_constants/separation = 50
 
@@ -43,7 +47,7 @@ texture = ExtResource("1_foyot")
 [node name="ItemName" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "dasda"
+text = "Purple glaze"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -59,3 +63,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_5dibj")
+
+[node name="Button" type="Button" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+expand_icon = true
+
+[connection signal="button_up" from="MarginContainer/Button" to="." method="_on_button_button_up"]

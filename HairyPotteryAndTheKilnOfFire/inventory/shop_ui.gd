@@ -16,6 +16,7 @@ func load_shop() -> void:
 		item.item_cost = str(invSlot.item.cost)
 		item.item_name = invSlot.item.name
 		item.texture = invSlot.item.texture
+		item.item = invSlot.item
 		
 		itemContainer.add_child(item)
 		

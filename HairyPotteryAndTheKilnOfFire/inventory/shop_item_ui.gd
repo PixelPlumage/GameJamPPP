@@ -8,6 +8,8 @@ class_name ShopItem
 var texture: Texture2D
 var item_cost: int
 var item_name: String
+var hovered: bool = false
+var item: InvItem
 
 func _ready() -> void:
 	item_sprite.texture = texture
@@ -17,3 +19,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.playerData.money < item_cost:
 		item_cost_label.add_theme_color_override("font_color", Color.RED)
+		
+
+func _on_mouse_entered() -> void:
+	hovered = true
+
+
+func _on_mouse_exited() -> void:
+	hovered = false
+
+
+func _on_button_button_up() -> void:
+	if Global.playerData.money >= item_cost:
+		Global.playerData.inv.insert(item)
+		Global.playerData.money -= item.cost
+	pass # Replace with function body.

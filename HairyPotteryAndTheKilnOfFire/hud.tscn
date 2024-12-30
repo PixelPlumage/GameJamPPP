@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmsv82ppjqex"]
+[gd_scene load_steps=4 format=3 uid="uid://bmsv82ppjqex"]
 
 [ext_resource type="PackedScene" uid="uid://v1byv44xo7jc" path="res://inventory/inv_ui.tscn" id="1_71fp2"]
+[ext_resource type="Script" path="res://hud.gd" id="1_rue18"]
+[ext_resource type="Texture2D" uid="uid://bhkjgqokxtap8" path="res://sprite/coinStack.png" id="2_lrxmb"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -9,5 +11,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rue18")
 
 [node name="Inv_UI" parent="." instance=ExtResource("1_71fp2")]
+
+[node name="Money" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Money"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_lrxmb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MoneyCount" type="Label" parent="Money"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1000"
