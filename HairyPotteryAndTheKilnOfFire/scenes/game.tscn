@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw0fde11u4vqm"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_w77j0"]
+[ext_resource type="PackedScene" uid="uid://bmsv82ppjqex" path="res://hud.tscn" id="2_lefuv"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_w77j0")
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="HUD" instance=ExtResource("2_lefuv")]

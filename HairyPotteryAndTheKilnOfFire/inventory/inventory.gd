@@ -2,7 +2,7 @@ extends Resource
 
 class_name Inv
 
-signal update
+
 
 @export var slots: Array[InvSlot] = []
 
@@ -15,4 +15,4 @@ func insert(item: InvItem):
 		if !emptyslots.is_empty():
 			emptyslots[0].item = item
 			emptyslots[0].count = 1
-	update.emit()
+	SignalBus.updateInv.emit()

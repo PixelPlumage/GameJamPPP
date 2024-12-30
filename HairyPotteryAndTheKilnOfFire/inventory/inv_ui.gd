@@ -6,8 +6,7 @@ class_name InvUI
 var is_open: bool = false
 
 func _ready() -> void:
-	update_slots()
-	Global.playerData.inv.update.connect(update_slots)
+	SignalBus.updateInv.connect(update_slots)
 	close()
 
 func update_slots() -> void:

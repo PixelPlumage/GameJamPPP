@@ -5,8 +5,8 @@ var scene_paths: Dictionary = {
 	"cliff_side": "res://scenes/cliff_side.tscn"
 }
 var save_file_path = "user://save/"
+var player_save_file_name = "PlayerSave.tres"
 
-var current_scene: String = "world" #world cliff_side
 var transition_scene: bool = false
 
 var player_exit_cliffside_posx: int = 0
@@ -16,36 +16,18 @@ var player_start_posy: int = 0
 var playerData: PlayerData = PlayerData.new()
 
 
-func _init() -> void:
-	for key: String in scene_paths.keys():
-		var path = save_file_path + key + ".tscn"
-		if ResourceLoader.exists(path):
-			var level = path
-			scene_paths[key] = level
-
-func change_scene(scene: String) -> void:
-	if !scene_paths.get(scene):
-		push_error("Couldn't switch to scene", scene)
+func load_player_data():
+	if not FileAccess.file_exists(save_file_path + player_save_file_name):
 		return
-	
-	save_current_scene()
-	get_tree().change_scene_to_file(scene_paths.get(scene))
-	finish_change_scene()
-	
+	playerData = (await ResourceLoader.load(save_file_path + player_save_file_name)).duplicate(true)
+	# Arrays don't deep clone, so do the clone here
+	for i in playerData.inv.slots.size():
+		var newSlot = InvSlot.new()
+		newSlot.count = playerData.inv.slots[i].count
+		newSlot.item = playerData.inv.slots[i].item
+		playerData.inv.slots[i] = newSlot
+	# Need to update the ui and reconnect the update signal
+	SignalBus.updateInv.emit()
 
-func save_current_scene() -> void:
-	var scene = PackedScene.new()
-	scene.pack(get_tree().get_current_scene())
-	var path = save_file_path + current_scene + ".tscn"
-	if scene_paths[current_scene] !=  path:
-		scene_paths[current_scene] = path
-	ResourceSaver.save(scene, save_file_path + current_scene + ".tscn")
-	
-
-func finish_change_scene() -> void:
-	if transition_scene == true:
-		transition_scene = false
-		if current_scene == "world":
-			current_scene = "cliff_side"
-		else:
-			current_scene = "world"
+func save_player():
+	ResourceSaver.save(Global.playerData, save_file_path + player_save_file_name)

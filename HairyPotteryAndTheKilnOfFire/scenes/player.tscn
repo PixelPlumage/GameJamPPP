@@ -1,8 +1,7 @@
-[gd_scene load_steps=57 format=3 uid="uid://bnjk2gyt56wcv"]
+[gd_scene load_steps=56 format=3 uid="uid://bnjk2gyt56wcv"]
 
 [ext_resource type="Texture2D" uid="uid://kai5yu2udwpf" path="res://art/characters/player.png" id="1_o1ipr"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_toorh"]
-[ext_resource type="PackedScene" uid="uid://v1byv44xo7jc" path="res://inventory/inv_ui.tscn" id="4_exsqq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ljdwt"]
 atlas = ExtResource("1_o1ipr")
@@ -442,9 +441,3 @@ limit_smoothed = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="Inv_UI" parent="." instance=ExtResource("4_exsqq")]
-offset_left = -78.0
-offset_top = -139.0
-offset_right = 77.0
-offset_bottom = -25.0

@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_interactable_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_interactable_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if (event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT):
 		if player != null:
 			print("player clicked me in range")

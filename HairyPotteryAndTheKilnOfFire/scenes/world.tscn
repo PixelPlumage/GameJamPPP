@@ -193,6 +193,4 @@ position = Vector2(207, 0)
 [node name="ShopKeeper" parent="." instance=ExtResource("8_ci7yc")]
 position = Vector2(32, 58)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]

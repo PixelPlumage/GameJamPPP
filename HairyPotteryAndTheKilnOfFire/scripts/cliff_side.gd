@@ -10,4 +10,4 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		
 
 func switch_level() -> void:
-	Global.change_scene("world")
+	SignalBus.changeScene.emit("world")

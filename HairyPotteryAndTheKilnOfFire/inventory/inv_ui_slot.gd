@@ -5,9 +5,11 @@ extends Panel
 
 func update(slot: InvSlot):
 	if !slot.item:
+		
 		item_visuals.visible = false
 		amount_text.visible = false
 	else:
+		print("updating slot", slot.item.name)
 		item_visuals.visible = true
 		item_visuals.texture = slot.item.texture
 		if slot.count > 1:
