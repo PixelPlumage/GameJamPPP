@@ -1,7 +1,8 @@
 extends Panel
 
-@onready var item_visuals: Sprite2D = $CenterContainer/Panel/item_display
-@onready var amount_text: Label = $CenterContainer/Panel/Label
+@onready var hoverArea = $HoverArea
+@onready var item_visuals: Sprite2D = $HoverArea/ItemContainer/Panel/item_display
+@onready var amount_text: Label = $HoverArea/ItemContainer/Panel/Label
 @export var locked = false
 var is_dragging: bool = false
 var original_position
@@ -14,7 +15,7 @@ func update(slot: InvSlot):
 		item_visuals.visible = false
 		amount_text.visible = false
 	else:
-		print("updating slot", slot.item.name)
+		#print("updating slot", slot.item.name)
 		item_visuals.visible = true
 		item_visuals.texture = slot.item.texture
 		if slot.count > 1:
@@ -26,16 +27,18 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
 			is_dragging = true
-			original_position = position
-			self.top_level = true
+			original_position = hoverArea.global_position
+			#hoverArea.top_level = true
+			hoverArea.z_index = 2
 		else:
 			if targets.size() > 0:
 				SignalBus.swapItems.emit(self, targets.back())
 			is_dragging = false
-			position = original_position
-			self.top_level = false
+			hoverArea.global_position = original_position
+			hoverArea.z_index = 1
+			#hoverArea.top_level = false
 	if event is InputEventMouseMotion and is_dragging:
-		self.position = get_viewport().get_mouse_position() - Vector2(16,16)
+		hoverArea.global_position = get_viewport().get_mouse_position() - Vector2(16,16)
 	pass # Replace with function body.
 
 
