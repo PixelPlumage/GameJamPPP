@@ -15,6 +15,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	
+#region Movement and animation
 func player_movement(delta: float) -> void:
 	if Input.is_action_pressed("ui_right") || Input.is_action_pressed("d"):
 		current_dir = "right"
@@ -70,6 +71,7 @@ func play_anim(movement: int) -> void:
 			anim.play("back_walk")
 		else:
 			anim.play("back_idle")	
+#endregion
 
 
 func collect(item: InvItem):

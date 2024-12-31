@@ -1,9 +1,11 @@
 extends Node2D
 
-var scene_paths: Dictionary = {
+var scene_path_defaults: Dictionary = {
 	"world": "res://scenes/world.tscn",
 	"cliff_side": "res://scenes/cliff_side.tscn"
 }
+var scene_paths: Dictionary = scene_path_defaults.duplicate()
+
 var save_file_path = "user://save/"
 
 var current_scene: String = "world" #world cliff_side
@@ -14,15 +16,18 @@ var shop = preload("res://inventory/shop_ui.tscn")
 var createdShop: ShopUI
 @onready var ui = $GameUI
 @onready var hud = $HUD
+@onready var menu = $Menu
+
+var is_menu_open: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.toggleShop.connect(toggle_shop)
 	SignalBus.closeShop.connect(close_shop)
 	SignalBus.changeScene.connect(change_scene)
-	current_scene_node = load(scene_paths.get("world")).instantiate()
-	Global.load_player_data()
-	add_child(current_scene_node)
+	SignalBus.loadGame.connect(load_game)
+	SignalBus.newGame.connect(new_game)
+	SignalBus.saveGame.connect(save_current_scene)
 
 func _init() -> void:
 	for key: String in scene_paths.keys():
@@ -30,7 +35,19 @@ func _init() -> void:
 		if ResourceLoader.exists(path):
 			var level = path
 			scene_paths[key] = level
+			
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Pause") and is_menu_open:
+		menu.visible = false
+		is_menu_open = false
+	elif event.is_action_pressed("Pause") and !is_menu_open:
+		menu.get_node("MainMenu/NinePatchRect/VBoxContainer/Continue").visible = false
+		menu.get_node("MainMenu/NinePatchRect/VBoxContainer/NewGame").visible = false
+		menu.visible = true
+		is_menu_open = true
+	
 
+#region Scene Loading Logic
 func change_scene(scene: String) -> void:
 	print("in change scene")
 	if !scene_paths.get(scene):
@@ -50,7 +67,7 @@ func save_current_scene() -> void:
 	var path = save_file_path + current_scene + ".tscn"
 	if scene_paths[current_scene] !=  path:
 		scene_paths[current_scene] = path
-	ResourceSaver.save(scene, save_file_path + current_scene + ".tscn")
+	ResourceSaver.save(scene, path)
 	Global.save_player()
 	
 
@@ -61,12 +78,27 @@ func finish_change_scene() -> void:
 			current_scene = "cliff_side"
 		else:
 			current_scene = "world"
+			
+func load_game(new_game: bool = false) -> void:
+	var scene = load(scene_paths.get("world"))
+	print(scene)
+	current_scene_node = load(scene_paths.get("world")).instantiate()
+	if !new_game:
+		Global.load_player_data()
+	ui.visible = true
+	hud.visible = true
+	menu.visible = false
+	is_menu_open = false
+	Global.is_game_playing = true
+	add_child(current_scene_node)
+
+func new_game() -> void:
+	scene_paths = scene_path_defaults.duplicate()
+	load_game(true)
+#endregion
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+#region Shop Logic
 func toggle_shop(inv: Inv) -> void:
 	if is_shop_open:
 		close_shop()
@@ -89,6 +121,7 @@ func close_shop():
 	#shop.ready.disconnect(load_shop)
 	createdShop = null
 	hud.layer = 1
+#endregion
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

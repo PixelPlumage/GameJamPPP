@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dygt1fvhluoka"]
 
-[ext_resource type="Script" path="res://rock.gd" id="1_sfpad"]
+[ext_resource type="Script" path="res://scripts/rock.gd" id="1_sfpad"]
 [ext_resource type="Resource" uid="uid://c2bv6krlv280r" path="res://inventory/items/clay.tres" id="2_j1bou"]
 [ext_resource type="Texture2D" uid="uid://crduk3nnk5brs" path="res://sprite/icon_clay.png" id="3_wc28c"]
 

@@ -15,6 +15,9 @@ var player_start_posx: int = 0
 var player_start_posy: int = 0
 var playerData: PlayerData = PlayerData.new()
 
+var is_game_playing: bool = false
+
+#region Saving and loading player data
 
 func load_player_data():
 	if not FileAccess.file_exists(save_file_path + player_save_file_name):
@@ -31,3 +34,8 @@ func load_player_data():
 
 func save_player():
 	ResourceSaver.save(Global.playerData, save_file_path + player_save_file_name)
+
+#endregion
+
+var current_cutscene
+var some_cutscene = false

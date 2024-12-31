@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt3ndrgisyy14"]
+
+[ext_resource type="Script" path="res://scripts/toolbar.gd" id="1_c0321"]
+[ext_resource type="PackedScene" uid="uid://bi3g4obwxgq15" path="res://inventory/inv_ui_slot.tscn" id="2_eotnc"]
+
+[node name="Toolbar" type="Control"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_c0321")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -20.0
+offset_right = 142.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="inv_ui_slot" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2
+
+[node name="inv_ui_slot2" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2
+
+[node name="inv_ui_slot3" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2
+
+[node name="inv_ui_slot4" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2
+
+[node name="inv_ui_slot5" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2
+
+[node name="inv_ui_slot6" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2
+
+[node name="inv_ui_slot7" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2
+
+[node name="inv_ui_slot8" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
+layout_mode = 2

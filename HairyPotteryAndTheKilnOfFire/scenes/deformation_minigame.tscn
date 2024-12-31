@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://jhysekt0lnra"]
+
+[ext_resource type="Script" path="res://scenes/deformation_minigame.gd" id="1_1anf3"]
+[ext_resource type="Texture2D" uid="uid://1whk448d7lik" path="res://sprite/inv_pottery_cup_raw.png" id="1_wrtp6"]
+[ext_resource type="Shader" path="res://deform.gdshader" id="2_qdvd1"]
+[ext_resource type="Texture2D" uid="uid://ibq0xwqbvou" path="res://sprite/inv_clay.png" id="3_uqjpj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ne122"]
+shader = ExtResource("2_qdvd1")
+shader_parameter/deformation = Vector2(-0.145, 0.005)
+shader_parameter/sideWaysDeformationFactor = 4.445
+shader_parameter/knockbackFactor = -0.285
+
+[node name="DeformationMinigame" type="Node2D"]
+script = ExtResource("1_1anf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(856, 63)
+texture = ExtResource("1_wrtp6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ne122")
+position = Vector2(558, 222)
+texture = ExtResource("3_uqjpj")
+
+[node name="Node" type="Node2D" parent="."]
+position = Vector2(363, 296)
+
+[node name="Polygon2D" type="Polygon2D" parent="Node"]
+position = Vector2(-62, -71)
+texture = ExtResource("3_uqjpj")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(69.9737, 31.5737, 93.867, 40.9603, 103.254, 66.5603, 100.694, 94.7203, 81.9203, 106.667, 55.467, 107.52, 32.427, 99.8403, 21.3337, 75.947, 32.427, 52.907, 47.787, 39.2537, 66.7264, 73.3629)
+uv = PackedVector2Array(69.9737, 31.5737, 93.867, 40.9603, 103.254, 66.5603, 100.694, 94.7203, 81.9203, 106.667, 55.467, 107.52, 32.427, 99.8403, 21.3337, 75.947, 32.427, 52.907, 47.787, 39.2537, 66.7264, 73.3629)
+polygons = [PackedInt32Array(9, 10, 0), PackedInt32Array(10, 0, 1), PackedInt32Array(10, 1, 2), PackedInt32Array(10, 2, 3), PackedInt32Array(10, 3, 4), PackedInt32Array(10, 5, 4), PackedInt32Array(10, 5, 6), PackedInt32Array(10, 6, 7), PackedInt32Array(10, 7, 8), PackedInt32Array(10, 8, 9)]
+bones = ["Bone2D11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), "Bone2D11/Bone2D", PackedFloat32Array(0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D11/Bone2D2", PackedFloat32Array(0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D11/Bone2D3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0), "Bone2D11/Bone2D4", PackedFloat32Array(0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0), "Bone2D11/Bone2D5", PackedFloat32Array(0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0), "Bone2D11/Bone2D6", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0), "Bone2D11/Bone2D7", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0), "Bone2D11/Bone2D8", PackedFloat32Array(0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0), "Bone2D11/Bone2D9", PackedFloat32Array(0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D11/Bone2D10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0)]
+internal_vertex_count = 1
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Node"]
+position = Vector2(0, -1)
+
+[node name="Bone2D11" type="Bone2D" parent="Node/Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="Bone2D" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(12, -21)
+rotation = -1.36366
+rest = Transform2D(0.205656, -0.978624, 0.978624, 0.205656, 12, -21)
+
+[node name="Bone2D2" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(-2, -20)
+rotation = -0.897712
+rest = Transform2D(0.6234, -0.781903, 0.781903, 0.6234, -2, -20)
+
+[node name="Bone2D3" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(-14, -13)
+rotation = -1.67435
+scale = Vector2(1, 1)
+rest = Transform2D(-0.103364, -0.994644, 0.994644, -0.103364, -14, -13)
+
+[node name="Bone2D4" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(25, 5.99999)
+rotation = 1.39091
+rest = Transform2D(0.178922, 0.983863, -0.983863, 0.178922, 25, 5.99999)
+
+[node name="Bone2D5" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(20, 14)
+rotation = 2.12239
+rest = Transform2D(-0.524043, 0.851692, -0.851692, -0.524043, 20, 14)
+
+[node name="Bone2D6" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(2, 18)
+rotation = 2.62312
+rest = Transform2D(-0.86858, 0.49555, -0.49555, -0.86858, 2, 18)
+
+[node name="Bone2D7" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(-22, 1.00001)
+rotation = -2.28099
+scale = Vector2(1, 1)
+rest = Transform2D(-0.651979, -0.758237, 0.758237, -0.651979, -22, 1.00001)
+
+[node name="Bone2D8" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(29, -5.00001)
+rotation = 0.894784
+rest = Transform2D(0.625688, 0.780074, -0.780074, 0.625688, 29, -5.00001)
+
+[node name="Bone2D9" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(21, -13)
+rotation = 0.188802
+rest = Transform2D(0.98223, 0.187683, -0.187683, 0.98223, 21, -13)
+
+[node name="Bone2D10" type="Bone2D" parent="Node/Skeleton2D/Bone2D11"]
+position = Vector2(-14, 13)
+rotation = -3.08356
+rest = Transform2D(-0.998316, -0.0580039, 0.0580039, -0.998316, -14, 13)

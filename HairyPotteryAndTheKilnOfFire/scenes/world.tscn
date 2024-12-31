@@ -173,7 +173,7 @@ position = Vector2(13, 36)
 [node name="collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
-polygon = PackedVector2Array(0, -1, 188, -1, 189, -1, 189, -30, 225, -30, 225, -1, 259, -1, 260, 29, 292, 29, 291, 45, 400, 45, 400, 224, 0, 224, 0, -21, -68, 238, 437, 243, 424, -45, 22, -38, 12, -7)
+polygon = PackedVector2Array(0, -1, 188, -1, 189, -1, 189, -30, 225, -30, 225, -1, 259, -1, 260, 29, 292, 29, 291, 45, 400, 45, 400, 84, 421, 84, 421, 123, 400, 123, 400, 224, 0, 224, 0, -21, -68, 238, 437, 243, 424, -45, 22, -38, 12, -7)
 
 [node name="cliffside_transition_point" type="Area2D" parent="."]
 
