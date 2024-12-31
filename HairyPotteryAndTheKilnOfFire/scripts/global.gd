@@ -16,13 +16,14 @@ var player_start_posy: int = 0
 var playerData: PlayerData = PlayerData.new()
 
 var is_game_playing: bool = false
+var is_shop_open: bool = false
 
 #region Saving and loading player data
 
 func load_player_data():
 	if not FileAccess.file_exists(save_file_path + player_save_file_name):
 		return
-	playerData = (await ResourceLoader.load(save_file_path + player_save_file_name)).duplicate(true)
+	playerData = ResourceLoader.load(save_file_path + player_save_file_name).duplicate(true)
 	# Arrays don't deep clone, so do the clone here
 	for i in playerData.inv.slots.size():
 		var newSlot = InvSlot.new()

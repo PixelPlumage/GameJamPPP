@@ -3,6 +3,7 @@ extends Panel
 @onready var hoverArea = $HoverArea
 @onready var item_visuals: Sprite2D = $HoverArea/ItemContainer/Panel/item_display
 @onready var amount_text: Label = $HoverArea/ItemContainer/Panel/Label
+@onready var itemContainer = $HoverArea/ItemContainer
 @export var locked = false
 var is_dragging: bool = false
 var original_position
@@ -15,13 +16,12 @@ func update(slot: InvSlot):
 		item_visuals.visible = false
 		amount_text.visible = false
 	else:
-		#print("updating slot", slot.item.name)
 		item_visuals.visible = true
 		item_visuals.texture = slot.item.texture
 		if slot.count > 1:
 			amount_text.visible = true
 			amount_text.text = str(slot.count)
-
+		itemContainer.tooltip_text = slot.item.tooltip
 
 func _on_gui_input(event: InputEvent) -> void:
 	

@@ -16,7 +16,7 @@ func _ready() -> void:
 	item_name_label.text = item_name
 	item_cost_label.text = str(item_cost)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Global.playerData.money < item_cost:
 		item_cost_label.add_theme_color_override("font_color", Color.RED)
 		

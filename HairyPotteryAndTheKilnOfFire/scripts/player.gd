@@ -16,11 +16,12 @@ func _physics_process(delta: float) -> void:
 	player_movement(delta)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			Global.playerData.update_selected(true)
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			Global.playerData.update_selected(false)
+	if !Global.is_shop_open:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+				Global.playerData.update_selected(true)
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+				Global.playerData.update_selected(false)
 	if event.is_action_pressed("1"):
 		Global.playerData.selectedSlot = 0
 	if event.is_action_pressed("2"):
@@ -37,8 +38,10 @@ func _input(event: InputEvent) -> void:
 		Global.playerData.selectedSlot = 6
 	if event.is_action_pressed("8"):
 		Global.playerData.selectedSlot = 7
+		
+
 #region Movement and animation
-func player_movement(delta: float) -> void:
+func player_movement(_delta: float) -> void:
 	if Input.is_action_pressed("ui_right") || Input.is_action_pressed("d"):
 		current_dir = "right"
 		play_anim(1)

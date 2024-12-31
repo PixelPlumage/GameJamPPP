@@ -9,3 +9,4 @@ name = "glaze_black"
 texture = ExtResource("2_fsx42")
 value = 1
 cost = 10
+tooltip = "Black glaze"

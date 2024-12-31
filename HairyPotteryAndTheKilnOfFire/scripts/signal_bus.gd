@@ -1,4 +1,5 @@
 extends Node
+@warning_ignore("unused_signal")
 
 signal toggleShop(inv: Inv)
 signal closeShop()

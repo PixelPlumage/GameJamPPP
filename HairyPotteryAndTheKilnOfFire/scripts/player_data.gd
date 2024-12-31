@@ -35,7 +35,6 @@ func update_money(value: int) -> void:
 	money += value
 	
 func update_selected(up: bool) -> void:
-	var oldSelected = selectedSlot
 	if up:
 		selectedSlot = (selectedSlot + 1) % 8
 	else:

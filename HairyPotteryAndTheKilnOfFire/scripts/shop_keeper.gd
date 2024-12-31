@@ -4,7 +4,6 @@ class_name ShopKeeper
 var player: Player
 @export var inv: Inv
 var shop: ShopUI
-var is_open: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player != null:
 		if Input.is_action_just_pressed("e"):
 			toggle_shop()

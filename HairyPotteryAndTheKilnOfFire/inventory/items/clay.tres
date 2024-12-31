@@ -9,3 +9,4 @@ name = "clay"
 texture = ExtResource("2_msj2k")
 value = 1
 cost = 5
+tooltip = ""

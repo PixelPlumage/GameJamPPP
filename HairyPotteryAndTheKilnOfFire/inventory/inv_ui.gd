@@ -28,7 +28,7 @@ func swap_slots(slot1, slot2) -> void:
 	Global.playerData.inv.slots[secondIndex] = tempFirstSlot
 	SignalBus.updateInv.emit()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("i"):
 		if is_open:
 			close()

@@ -11,7 +11,6 @@ var save_file_path = "user://save/"
 var current_scene: String = "world" #world cliff_side
 var current_scene_node: Node2D = null
 
-var is_shop_open: bool = false
 var shop = preload("res://inventory/shop_ui.tscn")
 var createdShop: ShopUI
 @onready var ui = $GameUI
@@ -79,11 +78,11 @@ func finish_change_scene() -> void:
 		else:
 			current_scene = "world"
 			
-func load_game(new_game: bool = false) -> void:
+func load_game(is_new_game: bool = false) -> void:
 	var scene = load(scene_paths.get("world"))
 	print(scene)
 	current_scene_node = load(scene_paths.get("world")).instantiate()
-	if !new_game:
+	if !is_new_game:
 		Global.load_player_data()
 	ui.visible = true
 	hud.visible = true
@@ -100,7 +99,7 @@ func new_game() -> void:
 
 #region Shop Logic
 func toggle_shop(inv: Inv) -> void:
-	if is_shop_open:
+	if Global.is_shop_open:
 		close_shop()
 	else:
 		open_shop(inv)
@@ -110,14 +109,15 @@ func open_shop(inv: Inv):
 	createdShop = shop.instantiate()
 	createdShop.inv = inv
 	#shop.ready.connect(load_shop)
-	is_shop_open = true
+	Global.is_shop_open = true
 	ui.add_child(createdShop)
 	ui.layer = 1
 	hud.layer = 0
 
 func close_shop():
-	is_shop_open = false
-	ui.remove_child(createdShop)
+	Global.is_shop_open = false
+	if createdShop != null:
+		ui.remove_child(createdShop)
 	#shop.ready.disconnect(load_shop)
 	createdShop = null
 	hud.layer = 1
