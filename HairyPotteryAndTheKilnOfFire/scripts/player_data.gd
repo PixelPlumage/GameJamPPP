@@ -5,15 +5,16 @@ class_name PlayerData
 @export var health: int = 100
 
 @export var money: int = 500
-
+@export var bagSize: int = 32
 @export var SavePos: Vector2
+
 
 @export var inv: Inv
 
 func _init() -> void:
 	inv = Inv.new()
-	inv.slots.resize(12)
-	for i in 12:
+	inv.slots.resize(bagSize)
+	for i in bagSize:
 		inv.slots[i] = InvSlot.new()
 
 func change_health(value: int) -> void:
