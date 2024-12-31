@@ -8,6 +8,14 @@ class_name PlayerData
 @export var bagSize: int = 32
 @export var SavePos: Vector2
 
+var selectedSlot = 0:
+	get:
+		return selectedSlot
+	set(newSlot):
+		var oldSlot = selectedSlot
+		selectedSlot = newSlot
+		SignalBus.selectedSlotChanged.emit(oldSlot, selectedSlot)
+		
 
 @export var inv: Inv
 
@@ -25,3 +33,13 @@ func UpdatePos(value: Vector2) -> void:
 	
 func update_money(value: int) -> void:
 	money += value
+	
+func update_selected(up: bool) -> void:
+	var oldSelected = selectedSlot
+	if up:
+		selectedSlot = (selectedSlot + 1) % 8
+	else:
+		if selectedSlot == 0:
+			selectedSlot = 7
+		else:
+			selectedSlot -= 1

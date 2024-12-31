@@ -24,7 +24,10 @@ func update(slot: InvSlot):
 
 
 func _on_gui_input(event: InputEvent) -> void:
+	
 	if event is InputEventMouseButton:
+		if locked:
+			return
 		if event.pressed:
 			is_dragging = true
 			original_position = hoverArea.global_position

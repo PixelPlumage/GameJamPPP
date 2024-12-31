@@ -31,32 +31,32 @@ grow_vertical = 2
 
 [node name="inv_ui_slot" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
 
 [node name="inv_ui_slot2" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
 
 [node name="inv_ui_slot3" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
 
 [node name="inv_ui_slot4" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
 
 [node name="inv_ui_slot5" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
 
 [node name="inv_ui_slot6" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
 
 [node name="inv_ui_slot7" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
 
 [node name="inv_ui_slot8" parent="HBoxContainer" instance=ExtResource("2_eotnc")]
 layout_mode = 2
-mouse_filter = 2
+locked = true
