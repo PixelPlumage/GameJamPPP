@@ -7,7 +7,7 @@ class_name StorageUI
 
 func _ready() -> void:
 	SignalBus.updateStorage.connect(update_storage)
-	for i in max(Global.storage.size(),Global.MIN_STORAGE):
+	for i in max(Global.gameState.storage.size(),Global.MIN_STORAGE):
 		var newSlot = slot_ui.instantiate()
 		newSlot.stored = true
 		itemContainer.add_child(newSlot)
@@ -15,6 +15,6 @@ func _ready() -> void:
 	update_storage()
 
 func update_storage():
-	for i in Global.storage.size():
-		slots[i].update(Global.storage[i])
+	for i in Global.gameState.storage.size():
+		slots[i].update(Global.gameState.storage[i])
 		

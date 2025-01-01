@@ -19,25 +19,25 @@ func _input(event: InputEvent) -> void:
 	if !Global.is_shop_open:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-				Global.playerData.update_selected(true)
+				Global.gameState.playerData.update_selected(true)
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-				Global.playerData.update_selected(false)
+				Global.gameState.playerData.update_selected(false)
 	if event.is_action_pressed("1"):
-		Global.playerData.selectedSlot = 0
+		Global.gameState.playerData.selectedSlot = 0
 	if event.is_action_pressed("2"):
-		Global.playerData.selectedSlot = 1
+		Global.gameState.playerData.selectedSlot = 1
 	if event.is_action_pressed("3"):
-		Global.playerData.selectedSlot = 2
+		Global.gameState.playerData.selectedSlot = 2
 	if event.is_action_pressed("4"):
-		Global.playerData.selectedSlot = 3
+		Global.gameState.playerData.selectedSlot = 3
 	if event.is_action_pressed("5"):
-		Global.playerData.selectedSlot = 4
+		Global.gameState.playerData.selectedSlot = 4
 	if event.is_action_pressed("6"):
-		Global.playerData.selectedSlot = 5
+		Global.gameState.playerData.selectedSlot = 5
 	if event.is_action_pressed("7"):
-		Global.playerData.selectedSlot = 6
+		Global.gameState.playerData.selectedSlot = 6
 	if event.is_action_pressed("8"):
-		Global.playerData.selectedSlot = 7
+		Global.gameState.playerData.selectedSlot = 7
 		
 
 #region Movement and animation
@@ -45,23 +45,23 @@ func player_movement(_delta: float) -> void:
 	if Input.is_action_pressed("ui_right") || Input.is_action_pressed("d"):
 		current_dir = "right"
 		play_anim(1)
-		velocity.x = Global.playerData.speed
+		velocity.x = Global.gameState.playerData.speed
 		velocity.y = 0
 	elif Input.is_action_pressed("ui_left") || Input.is_action_pressed("a"):
 		play_anim(1)
 		current_dir = "left"
-		velocity.x = -Global.playerData.speed
+		velocity.x = -Global.gameState.playerData.speed
 		velocity.y = 0
 	elif Input.is_action_pressed("ui_down") || Input.is_action_pressed("s"):
 		play_anim(1)
 		current_dir = "down"
 		velocity.x = 0
-		velocity.y = Global.playerData.speed
+		velocity.y = Global.gameState.playerData.speed
 	elif Input.is_action_pressed("ui_up") || Input.is_action_pressed("w"):
 		play_anim(1)
 		current_dir = "up"
 		velocity.x = 0
-		velocity.y = -Global.playerData.speed
+		velocity.y = -Global.gameState.playerData.speed
 	else:
 		play_anim(0)
 		velocity.x = 0
@@ -100,4 +100,4 @@ func play_anim(movement: int) -> void:
 
 
 func collect(item: InvItem):
-	Global.playerData.Inv.insert(item)
+	Global.gameState.playerData.Inv.insert(item)

@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 
 func update_toolbar():
 	var toolbarSlots = toolbarContainer.get_children()
-	var invSlots = Global.playerData.inv.slots.slice(0, maxSlots)
+	var invSlots = Global.gameState.playerData.inv.slots.slice(0, maxSlots)
 	for i in maxSlots:
 		toolbarSlots[i].update(invSlots[i])
 		

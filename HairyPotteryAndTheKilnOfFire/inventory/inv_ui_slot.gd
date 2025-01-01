@@ -23,6 +23,9 @@ func update(slot: InvSlot):
 		if slot.count > 1:
 			amount_text.visible = true
 			amount_text.text = str(slot.count)
+		else:
+			amount_text.visible = false
+			amount_text.text = str(slot.count)
 		itemContainer.tooltip_text = slot.item.tooltip
 
 func _on_gui_input(event: InputEvent) -> void:

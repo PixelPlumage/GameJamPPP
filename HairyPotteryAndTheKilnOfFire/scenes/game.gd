@@ -73,7 +73,7 @@ func save_current_scene() -> void:
 	if scene_paths[current_scene] !=  path:
 		scene_paths[current_scene] = path
 	ResourceSaver.save(scene, path)
-	Global.save_player()
+	Global.save_game()
 	
 
 func finish_change_scene() -> void:
@@ -86,10 +86,9 @@ func finish_change_scene() -> void:
 			
 func load_game(is_new_game: bool = false) -> void:
 	var scene = load(scene_paths.get("world"))
-	print(scene)
 	current_scene_node = load(scene_paths.get("world")).instantiate()
 	if !is_new_game:
-		Global.load_player_data()
+		Global.load_game()
 	ui.visible = true
 	hud.visible = true
 	menu.visible = false
@@ -138,11 +137,10 @@ func toggle_storage(storagePosition: Vector2):
 		
 func open_storage(storagePosition: Vector2):
 	createdStorage = storage.instantiate()
-	print(storagePosition)
 	createdStorage.global_position.y = 150
 	Global.is_storage_open = true
 	hud.add_child(createdStorage)
-	pass
+	SignalBus.openInv.emit()
 	
 func close_storage():
 	print("close storage")

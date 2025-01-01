@@ -6,6 +6,7 @@ signal toggleShop(inv: Inv)
 signal closeShop()
 signal toggleStorage(position: Vector2)
 signal closeStorage
+signal openInv
 signal updateInv
 signal updateStorage
 signal swapItems(slot1, slot2)

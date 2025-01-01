@@ -9,23 +9,25 @@ var is_open: bool = false
 
 func _ready() -> void:
 	SignalBus.updateInv.connect(update_slots)
+	SignalBus.openInv.connect(open)
 	#SignalBus.swapItems.connect(swap_slots)
-	for slot in Global.playerData.inv.slots:
+	for slot in Global.gameState.playerData.inv.slots:
 		var newSlot = slot_ui.instantiate()
 		slotsContainer.add_child(newSlot)
-	slots = slotsContainer.get_children()	
+	slots = slotsContainer.get_children()
+	update_slots()
 	close()
 
 func update_slots() -> void:
-	for i in range(min(Global.playerData.inv.slots.size(), slots.size())):
-		slots[i].update(Global.playerData.inv.slots[i])
+	for i in range(min(Global.gameState.playerData.inv.slots.size(), slots.size())):
+		slots[i].update(Global.gameState.playerData.inv.slots[i])
 
 #func swap_slots(slot1, slot2) -> void:
-	#var firstIndex = Global.playerData.inv.slots.find(slot1)
-	#var secondIndex = Global.playerData.inv.slots.find(slot2)
+	#var firstIndex = Global.gameState.playerData.inv.slots.find(slot1)
+	#var secondIndex = Global.gameState.playerData.inv.slots.find(slot2)
 	#var tempFirstSlot = slot1.duplicate()
-	#Global.playerData.inv.slots[firstIndex] = slot2.duplicate()
-	#Global.playerData.inv.slots[secondIndex] = tempFirstSlot
+	#Global.gameState.playerData.inv.slots[firstIndex] = slot2.duplicate()
+	#Global.gameState.playerData.inv.slots[secondIndex] = tempFirstSlot
 	#SignalBus.updateInv.emit()
 
 

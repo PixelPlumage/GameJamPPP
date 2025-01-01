@@ -17,7 +17,7 @@ func _ready() -> void:
 	item_cost_label.text = str(item_cost)
 	
 func _process(_delta: float) -> void:
-	if Global.playerData.money < item_cost:
+	if Global.gameState.playerData.money < item_cost:
 		item_cost_label.add_theme_color_override("font_color", Color.RED)
 		
 
@@ -30,7 +30,7 @@ func _on_mouse_exited() -> void:
 
 
 func _on_button_button_up() -> void:
-	if Global.playerData.money >= item_cost:
-		Global.playerData.inv.insert(item)
-		Global.playerData.money -= item.cost
+	if Global.gameState.playerData.money >= item_cost:
+		Global.gameState.playerData.inv.insert(item)
+		Global.gameState.playerData.money -= item.cost
 	pass # Replace with function body.
