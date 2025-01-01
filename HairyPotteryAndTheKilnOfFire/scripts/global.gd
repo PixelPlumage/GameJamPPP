@@ -17,6 +17,8 @@ var player_start_posy: int = 0
 var playerData: PlayerData = PlayerData.new()
 var storage: Array[InvSlot] = [load("res://inventory/debug/test_stored_slot.tres")]
 
+var current_cutscene
+var some_cutscene = false
 
 var is_game_playing: bool = false
 var is_shop_open: bool = false
@@ -61,6 +63,20 @@ func swap_items(slot1: InvSlot, slot2: InvSlot) -> void:
 	var secondIndex: int
 	var tempFirstSlot = slot1.duplicate()
 	var tempSecondSlot = slot2.duplicate()
+	var merge = is_same_item(slot1, slot2)
+	if merge:
+		slot2.count += slot1.count
+		slot1.item = null
+		slot1.count = 0
+		#var storageIndex = Global.storage.find(slot1)
+		#var invIndex = Global.playerData.inv.slots.find(slot1)
+		#if storageIndex >= 0:
+			#Global.storage[storageIndex] = InvSlot.new()
+		#elif invIndex >= 0:
+			#Global.playerData.inv.slots[invIndex] = InvSlot.new()
+		SignalBus.updateStorage.emit()
+		SignalBus.updateInv.emit()
+		return
 	if slot1.stored and slot2.stored:
 		firstIndex = Global.storage.find(slot1)
 		secondIndex = Global.storage.find(slot2)
@@ -94,5 +110,5 @@ func swap_items(slot1: InvSlot, slot2: InvSlot) -> void:
 		Global.playerData.inv.slots[secondIndex] = tempFirstSlot
 		SignalBus.updateInv.emit()
 
-var current_cutscene
-var some_cutscene = false
+func is_same_item(slot1: InvSlot, slot2: InvSlot):
+	return slot1.item == slot2.item
