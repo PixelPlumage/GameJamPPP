@@ -13,6 +13,10 @@ var current_scene_node: Node2D = null
 
 var shop = preload("res://inventory/shop_ui.tscn")
 var createdShop: ShopUI
+
+var storage = preload("res://scenes/storage_ui.tscn")
+var createdStorage: StorageUI
+
 @onready var ui = $GameUI
 @onready var hud = $HUD
 @onready var menu = $Menu
@@ -23,6 +27,8 @@ var is_menu_open: bool = true
 func _ready() -> void:
 	SignalBus.toggleShop.connect(toggle_shop)
 	SignalBus.closeShop.connect(close_shop)
+	SignalBus.toggleStorage.connect(toggle_storage)
+	SignalBus.closeStorage.connect(close_storage)
 	SignalBus.changeScene.connect(change_scene)
 	SignalBus.loadGame.connect(load_game)
 	SignalBus.newGame.connect(new_game)
@@ -122,6 +128,27 @@ func close_shop():
 	createdShop = null
 	hud.layer = 1
 #endregion
+
+#region Storage Logic
+func toggle_storage(storagePosition: Vector2):
+	if !Global.is_storage_open:
+		open_storage(storagePosition)
+	else:
+		close_storage()
+		
+func open_storage(storagePosition: Vector2):
+	createdStorage = storage.instantiate()
+	print(storagePosition)
+	createdStorage.global_position.y = 150
+	Global.is_storage_open = true
+	hud.add_child(createdStorage)
+	pass
+	
+func close_storage():
+	print("close storage")
+	Global.is_storage_open = false
+	if createdStorage != null:
+		hud.remove_child(createdStorage)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

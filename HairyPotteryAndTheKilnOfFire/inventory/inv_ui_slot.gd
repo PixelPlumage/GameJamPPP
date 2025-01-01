@@ -5,14 +5,16 @@ extends Panel
 @onready var amount_text: Label = $HoverArea/ItemContainer/Panel/Label
 @onready var itemContainer = $HoverArea/ItemContainer
 @export var locked = false
+@export var stored = false
+var invSlot
 var is_dragging: bool = false
 var original_position
 
 var targets: Array[Node] = []
 
 func update(slot: InvSlot):
+	invSlot = slot
 	if !slot.item:
-		
 		item_visuals.visible = false
 		amount_text.visible = false
 	else:
@@ -24,7 +26,6 @@ func update(slot: InvSlot):
 		itemContainer.tooltip_text = slot.item.tooltip
 
 func _on_gui_input(event: InputEvent) -> void:
-	
 	if event is InputEventMouseButton:
 		if locked:
 			return
@@ -35,7 +36,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			hoverArea.z_index = 2
 		else:
 			if targets.size() > 0:
-				SignalBus.swapItems.emit(self, targets.back())
+				SignalBus.swapItems.emit(self.invSlot, targets.back().invSlot)
 			is_dragging = false
 			hoverArea.global_position = original_position
 			hoverArea.z_index = 1

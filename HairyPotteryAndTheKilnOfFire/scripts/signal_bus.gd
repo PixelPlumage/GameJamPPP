@@ -3,8 +3,11 @@ extends Node
 
 signal toggleShop(inv: Inv)
 signal closeShop()
+signal toggleStorage(position: Vector2)
+signal closeStorage
 signal changeScene(scene: String)
 signal updateInv
+signal updateStorage
 signal newGame
 signal loadGame
 signal saveGame

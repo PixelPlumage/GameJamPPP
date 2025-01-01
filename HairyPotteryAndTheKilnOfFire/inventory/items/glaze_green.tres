@@ -9,3 +9,4 @@ name = "glaze_green"
 texture = ExtResource("2_5aih8")
 value = 1
 cost = 20
+tooltip = ""

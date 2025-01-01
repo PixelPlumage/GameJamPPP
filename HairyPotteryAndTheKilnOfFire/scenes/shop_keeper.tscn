@@ -16,41 +16,49 @@
 [sub_resource type="Resource" id="Resource_78ysr"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("4_galyy")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_wvne8"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("5_lcxis")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_2mitw"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("6_jrydo")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_stj1r"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("7_4ei1a")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_ywyhk"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("8_15qq1")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_wf1ra"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("9_ql20t")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_nohj1"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("10_3fpgr")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_ps63q"]
 script = ExtResource("3_fbyqo")
 item = ExtResource("11_bcj7l")
+stored = false
 count = 0
 
 [sub_resource type="Resource" id="Resource_j1as2"]
@@ -58,28 +66,27 @@ script = ExtResource("2_673x1")
 slots = Array[ExtResource("3_fbyqo")]([SubResource("Resource_78ysr"), SubResource("Resource_wvne8"), SubResource("Resource_2mitw"), SubResource("Resource_stj1r"), SubResource("Resource_ywyhk"), SubResource("Resource_wf1ra"), SubResource("Resource_nohj1"), SubResource("Resource_ps63q")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xb2n"]
-size = Vector2(16, 16)
+size = Vector2(16, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cbur3"]
 radius = 14.0
 
 [node name="ShopKeeper" type="StaticBody2D"]
+modulate = Color(0, 0.972556, 0.126015, 1)
 script = ExtResource("1_uy2na")
 inv = SubResource("Resource_j1as2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_7d00e")
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_8xb2n")
 
 [node name="InteractableArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_cbur3")
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]

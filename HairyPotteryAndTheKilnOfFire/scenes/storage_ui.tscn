@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://nvqbgkmqf6ld"]
+
+[ext_resource type="Script" path="res://storage_ui.gd" id="1_sqhci"]
+
+[node name="StorageUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sqhci")
+
+[node name="StorageContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(176, 600)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 186.0
+offset_bottom = 610.0
+horizontal_scroll_mode = 0
+
+[node name="ItemContainer" type="GridContainer" parent="StorageContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5

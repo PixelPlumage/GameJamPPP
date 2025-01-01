@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvSlot" load_steps=3 format=3 uid="uid://de0h40n50qt63"]
+
+[ext_resource type="Resource" uid="uid://dj8wvnonxpeog" path="res://inventory/items/glaze_red.tres" id="1_bevue"]
+[ext_resource type="Script" path="res://inventory/Inv_slot.gd" id="1_fpkp0"]
+
+[resource]
+script = ExtResource("1_fpkp0")
+item = ExtResource("1_bevue")
+stored = true
+count = 5
