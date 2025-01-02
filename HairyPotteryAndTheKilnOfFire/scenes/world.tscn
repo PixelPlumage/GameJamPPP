@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://0qcuicy68qvw"]
+[gd_scene load_steps=17 format=4 uid="uid://0qcuicy68qvw"]
 
 [ext_resource type="Texture2D" uid="uid://bfbl5ye6vq57c" path="res://art/tilesets/plains.png" id="1_1x2c8"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wy231"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dygt1fvhluoka" path="res://scenes/rock.tscn" id="7_4epay"]
 [ext_resource type="PackedScene" uid="uid://dnrgllsp1mbag" path="res://scenes/shop_keeper.tscn" id="8_ci7yc"]
 [ext_resource type="PackedScene" uid="uid://bic7kfdhl0gwm" path="res://scenes/storage.tscn" id="9_xswum"]
+[ext_resource type="PackedScene" uid="uid://c5l452gsrmtpt" path="res://scenes/magic_teapot.tscn" id="10_0j3dg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u1wr"]
 texture = ExtResource("1_1x2c8")
@@ -199,5 +200,8 @@ position = Vector2(126, 151)
 
 [node name="Storage2" parent="." instance=ExtResource("9_xswum")]
 position = Vector2(334, 113)
+
+[node name="MagicTeapot" parent="." instance=ExtResource("10_0j3dg")]
+position = Vector2(201, 150)
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]

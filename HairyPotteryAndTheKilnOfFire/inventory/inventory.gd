@@ -7,7 +7,7 @@ class_name Inv
 @export var slots: Array[InvSlot] = []
 
 func insert(item: InvItem):
-	var itemslots = slots.filter(func(slot): return slot.item.id == item.id)
+	var itemslots = slots.filter(func(slot): return slot.item != null and slot.item.id == item.id)
 	if !itemslots.is_empty():
 		itemslots[0].count += 1
 	else:
