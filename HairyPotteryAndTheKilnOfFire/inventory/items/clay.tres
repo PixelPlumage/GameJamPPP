@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_ss26m")
 name = "clay"
+id = 0
 texture = ExtResource("2_msj2k")
 value = 1
 cost = 5
