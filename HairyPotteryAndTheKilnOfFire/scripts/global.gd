@@ -25,10 +25,10 @@ const MIN_STORAGE = 30
 func _ready() -> void:
 	if gameState.storage.size() < MIN_STORAGE:
 		gameState.storage.resize(MIN_STORAGE)
-		for i in gameState.storage.size() -1:
+		for i in gameState.storage.size():
 			var newSlot = InvSlot.new()
 			newSlot.stored = true
-			gameState.storage[i+1] = newSlot
+			gameState.storage[i] = newSlot
 	SignalBus.swapItems.connect(swap_items)
 
 #region Saving and loading player data
@@ -103,4 +103,6 @@ func swap_items(slot1: InvSlot, slot2: InvSlot) -> void:
 		SignalBus.updateInv.emit()
 
 func is_same_item(slot1: InvSlot, slot2: InvSlot):
-	return slot1.item == slot2.item
+	if slot1.item == null or slot2.item == null:
+		return false
+	return slot1.item.id == slot2.item.id

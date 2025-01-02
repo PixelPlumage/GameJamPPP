@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_5xvv0")
 name = "glaze_white"
+id = 7
 texture = ExtResource("2_cjfbr")
 value = 1
 cost = 40
+tooltip = ""

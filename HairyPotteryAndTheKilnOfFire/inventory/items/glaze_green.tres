@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_3cqiw")
 name = "glaze_green"
+id = 3
 texture = ExtResource("2_5aih8")
 value = 1
 cost = 20

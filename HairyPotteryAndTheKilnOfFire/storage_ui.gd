@@ -12,6 +12,7 @@ func _ready() -> void:
 		newSlot.stored = true
 		itemContainer.add_child(newSlot)
 	slots = itemContainer.get_children()
+	print("setup sotrage")
 	update_storage()
 
 func update_storage():
