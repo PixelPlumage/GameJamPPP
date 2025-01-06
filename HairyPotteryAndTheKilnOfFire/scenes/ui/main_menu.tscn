@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dp8jcahsfof8r"]
 
 [ext_resource type="Texture2D" uid="uid://du0gmjn4t3khw" path="res://sprite/inventory.png" id="1_6e5ug"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ffxae"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_ffxae"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

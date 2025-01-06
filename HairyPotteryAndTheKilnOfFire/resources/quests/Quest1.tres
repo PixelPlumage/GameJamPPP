@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://d2nmsvnilu4gk"]
+
+[ext_resource type="Script" path="res://scripts/quests/quest_objective.gd" id="1_giv3i"]
+[ext_resource type="Script" path="res://scripts/quests/quest.gd" id="2_7fuso"]
+[ext_resource type="Script" path="res://scripts/quests/quest_reward.gd" id="2_ajn02"]
+
+[sub_resource type="Resource" id="Resource_hhtpt"]
+script = ExtResource("1_giv3i")
+id = 0
+objectiveText = ""
+
+[sub_resource type="Resource" id="Resource_tpg3s"]
+script = ExtResource("1_giv3i")
+id = 0
+objectiveText = "Collect 10 sticks"
+
+[sub_resource type="Resource" id="Resource_3mx3d"]
+script = ExtResource("2_ajn02")
+itemId = 0
+count = 0
+
+[resource]
+script = ExtResource("2_7fuso")
+id = 0
+name = "Quest 1"
+description = "Get stick"
+objectives = Array[ExtResource("1_giv3i")]([SubResource("Resource_tpg3s")])
+completed_objectives = Array[ExtResource("1_giv3i")]([])
+current_objective = SubResource("Resource_hhtpt")
+reward = SubResource("Resource_3mx3d")

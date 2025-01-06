@@ -9,4 +9,4 @@ Once you have collected 10 sticks return to me and I shall teach you how to oper
 	I will be waiting
 - No thanks
 	Too bad, that's just how the game works
-[signal arg="endDialogue"]
+[signal arg="0"]

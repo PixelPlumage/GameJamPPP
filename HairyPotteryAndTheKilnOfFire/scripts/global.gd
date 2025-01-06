@@ -13,12 +13,16 @@ var player_exit_cliffside_posy: int = 0
 var player_start_posx: int = 0
 var player_start_posy: int = 0
 var gameState: GameState = GameState.new()
-
+var questManager: QuestManager = QuestManager.new()
 var some_cutscene = false
 
 var is_game_playing: bool = false
 var is_shop_open: bool = false
 var is_storage_open: bool = false
+var is_quest_log_open: bool = false
+var save_file_path = "user://save/"
+var save_file_name = "GameState.tres"
+var quest_file_path = "res://resources/quests"
 
 const MIN_STORAGE = 30
 
@@ -30,12 +34,9 @@ func _ready() -> void:
 			newSlot.stored = true
 			gameState.storage[i] = newSlot
 	SignalBus.swapItems.connect(swap_items)
+	load_quests()
 
 #region Saving and loading player data
-
-var save_file_path = "user://save/"
-var save_file_name = "GameState.tres"
-
 func load_game():
 	if not FileAccess.file_exists(save_file_path + save_file_name):
 		return
@@ -106,3 +107,15 @@ func is_same_item(slot1: InvSlot, slot2: InvSlot):
 	if slot1.item == null or slot2.item == null:
 		return false
 	return slot1.item.id == slot2.item.id
+
+func load_quests() -> void:
+	var dir = DirAccess.open(quest_file_path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if !dir.current_is_dir():
+				print(quest_file_path.path_join(file_name))
+				var res = ResourceLoader.load(quest_file_path.path_join(file_name), "Quest").duplicate(true)
+				questManager.allQuests.append(res)
+			file_name = dir.get_next()

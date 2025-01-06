@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bt3ndrgisyy14"]
 
-[ext_resource type="Script" path="res://scripts/toolbar.gd" id="1_c0321"]
+[ext_resource type="Script" path="res://scripts/ui/toolbar.gd" id="1_c0321"]
 [ext_resource type="PackedScene" uid="uid://bi3g4obwxgq15" path="res://inventory/inv_ui_slot.tscn" id="2_eotnc"]
 
 [node name="Toolbar" type="Control"]

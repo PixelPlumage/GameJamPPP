@@ -1,8 +1,8 @@
 extends Node2D
 
 var scene_path_defaults: Dictionary = {
-	"world": "res://scenes/world.tscn",
-	"cliff_side": "res://scenes/cliff_side.tscn"
+	"world": "res://scenes/levels/world.tscn",
+	"cliff_side": "res://scenes/levels/cliff_side.tscn"
 }
 var scene_paths: Dictionary = scene_path_defaults.duplicate()
 
@@ -14,8 +14,11 @@ var current_scene_node: Node2D = null
 var shop = preload("res://inventory/shop_ui.tscn")
 var createdShop: ShopUI
 
-var storage = preload("res://scenes/storage_ui.tscn")
+var storage = preload("res://scenes/ui/storage_ui.tscn")
 var createdStorage: StorageUI
+
+var questLog = preload("res://scenes/quests/quest_log.tscn")
+var createdQuestLog: QuestLogUI
 
 @onready var ui = $GameUI
 @onready var hud = $HUD
@@ -30,9 +33,13 @@ func _ready() -> void:
 	SignalBus.toggleStorage.connect(toggle_storage)
 	SignalBus.closeStorage.connect(close_storage)
 	SignalBus.changeScene.connect(change_scene)
+	SignalBus.toggleQuestLog.connect(toggle_quest_log)
+	SignalBus.closeQuestLog.connect(close_quest_log)
+	
 	SignalBus.loadGame.connect(load_game)
 	SignalBus.newGame.connect(new_game)
 	SignalBus.saveGame.connect(save_current_scene)
+	Dialogic.signal_event.connect(add_quest)
 
 func _init() -> void:
 	for key: String in scene_paths.keys():
@@ -52,7 +59,7 @@ func _input(event: InputEvent) -> void:
 		is_menu_open = true
 	
 
-#region Scene Loading Logic
+#region Saving/Loading Logic
 func change_scene(scene: String) -> void:
 	print("in change scene")
 	if !scene_paths.get(scene):
@@ -67,6 +74,8 @@ func change_scene(scene: String) -> void:
 	
 
 func save_current_scene() -> void:
+	if current_scene_node == null:
+		return
 	var scene = PackedScene.new()
 	scene.pack(current_scene_node)
 	var path = save_file_path + current_scene + ".tscn"
@@ -85,7 +94,6 @@ func finish_change_scene() -> void:
 			current_scene = "world"
 			
 func load_game(is_new_game: bool = false) -> void:
-	var scene = load(scene_paths.get("world"))
 	current_scene_node = load(scene_paths.get("world")).instantiate()
 	if !is_new_game:
 		Global.load_game()
@@ -99,8 +107,11 @@ func load_game(is_new_game: bool = false) -> void:
 func new_game() -> void:
 	scene_paths = scene_path_defaults.duplicate()
 	load_game(true)
+	
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_current_scene()
 #endregion
-
 
 #region Shop Logic
 func toggle_shop(inv: Inv) -> void:
@@ -135,7 +146,7 @@ func toggle_storage(storagePosition: Vector2):
 	else:
 		close_storage()
 		
-func open_storage(storagePosition: Vector2):
+func open_storage(_storagePosition: Vector2):
 	createdStorage = storage.instantiate()
 	createdStorage.global_position.y = 150
 	Global.is_storage_open = true
@@ -144,10 +155,37 @@ func open_storage(storagePosition: Vector2):
 	
 func close_storage():
 	print("close storage")
+	if !Global.is_storage_open:
+		return
 	Global.is_storage_open = false
 	if createdStorage != null:
 		hud.remove_child(createdStorage)
+#endregion
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		save_current_scene()
+#region Quest Log Logic
+func toggle_quest_log():
+	if !Global.is_quest_log_open:
+		open_quest_log()
+	else:
+		close_quest_log()
+
+func open_quest_log():
+	createdQuestLog = questLog.instantiate()
+	Global.is_quest_log_open = true
+	hud.add_child(createdQuestLog)
+		
+	pass
+
+func close_quest_log():
+	if !Global.is_quest_log_open:
+		return
+	Global.is_quest_log_open = false
+	if createdQuestLog != null:
+		hud.remove_child(createdQuestLog)
+	pass
+	
+func add_quest(questId: String):
+	print(questId)
+	print("adding quest")
+	Global.questManager.addQuest(0)
+#endregion

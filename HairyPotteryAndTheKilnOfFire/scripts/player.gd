@@ -5,7 +5,6 @@ class_name Player
 
 @export var current_dir: String = "none"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("front_idle")
@@ -38,6 +37,8 @@ func _input(event: InputEvent) -> void:
 		Global.gameState.playerData.selectedSlot = 6
 	if event.is_action_pressed("8"):
 		Global.gameState.playerData.selectedSlot = 7
+	if event.is_action_released("q"):
+		SignalBus.toggleQuestLog.emit()
 		
 
 #region Movement and animation

@@ -1,18 +1,18 @@
 [gd_scene load_steps=17 format=4 uid="uid://0qcuicy68qvw"]
 
-[ext_resource type="Texture2D" uid="uid://bfbl5ye6vq57c" path="res://art/tilesets/plains.png" id="1_1x2c8"]
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_wy231"]
-[ext_resource type="Texture2D" uid="uid://1aelg4m6lmu0" path="res://art/tilesets/grass.png" id="2_lvos7"]
-[ext_resource type="Texture2D" uid="uid://bwegcxuim2pqo" path="res://art/objects/objects.png" id="3_adafx"]
-[ext_resource type="PackedScene" uid="uid://bnjk2gyt56wcv" path="res://scenes/player.tscn" id="4_aw1le"]
-[ext_resource type="Texture2D" uid="uid://bw6mn5yp4vtgb" path="res://art/tilesets/merged.png" id="5_v77yy"]
-[ext_resource type="PackedScene" uid="uid://dygt1fvhluoka" path="res://scenes/rock.tscn" id="7_4epay"]
-[ext_resource type="PackedScene" uid="uid://dnrgllsp1mbag" path="res://scenes/shop_keeper.tscn" id="8_ci7yc"]
-[ext_resource type="PackedScene" uid="uid://bic7kfdhl0gwm" path="res://scenes/storage.tscn" id="9_xswum"]
-[ext_resource type="PackedScene" uid="uid://c5l452gsrmtpt" path="res://scenes/magic_teapot.tscn" id="10_0j3dg"]
+[ext_resource type="Script" path="res://scripts/levels/world.gd" id="1_ct2sj"]
+[ext_resource type="Texture2D" uid="uid://bfbl5ye6vq57c" path="res://art/tilesets/plains.png" id="2_yr5em"]
+[ext_resource type="Texture2D" uid="uid://1aelg4m6lmu0" path="res://art/tilesets/grass.png" id="3_uvk0h"]
+[ext_resource type="Texture2D" uid="uid://bwegcxuim2pqo" path="res://art/objects/objects.png" id="4_7hocd"]
+[ext_resource type="Texture2D" uid="uid://bw6mn5yp4vtgb" path="res://art/tilesets/merged.png" id="5_fi2dp"]
+[ext_resource type="PackedScene" uid="uid://bnjk2gyt56wcv" path="res://scenes/player.tscn" id="6_ekdrx"]
+[ext_resource type="PackedScene" uid="uid://dygt1fvhluoka" path="res://scenes/rock.tscn" id="7_2bq5p"]
+[ext_resource type="PackedScene" uid="uid://dnrgllsp1mbag" path="res://scenes/shop_keeper.tscn" id="8_am6y6"]
+[ext_resource type="PackedScene" uid="uid://bic7kfdhl0gwm" path="res://scenes/storage.tscn" id="9_qejlu"]
+[ext_resource type="PackedScene" uid="uid://c5l452gsrmtpt" path="res://scenes/magic_teapot.tscn" id="10_p3615"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u1wr"]
-texture = ExtResource("1_1x2c8")
+texture = ExtResource("2_yr5em")
 1:0/0 = 0
 1:1/0 = 0
 1:2/0 = 0
@@ -51,11 +51,11 @@ texture = ExtResource("1_1x2c8")
 5:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4pj3f"]
-texture = ExtResource("2_lvos7")
+texture = ExtResource("3_uvk0h")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dakcp"]
-texture = ExtResource("3_adafx")
+texture = ExtResource("4_7hocd")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, 1.5, 6.125, 1.625, 0, 5.875)
 0:1/0 = 0
@@ -79,7 +79,7 @@ texture = ExtResource("3_adafx")
 0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.25, 13, 7.5, 11.75, 12, 18.75, 11.6673, 25.8094, -7, 26.5, -11.5, 23, -11.75, 15.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ovvs"]
-texture = ExtResource("5_v77yy")
+texture = ExtResource("5_fi2dp")
 1:0/0 = 0
 1:1/0 = 0
 1:2/0 = 0
@@ -151,7 +151,7 @@ size = Vector2(36, 30)
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_wy231")
+script = ExtResource("1_ct2sj")
 
 [node name="ground" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -169,7 +169,7 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAACAAAAAgAKAAcAAAAGAAQAAgAKAAcAAAASAAQAAgAKAAcAAAAXAAAAAgAKAAcAAAALAAsAAgAKAAcAAAAKAAEAAgAAAAUAAAAQAAQAAgAAAAUAAAABAAsAAgAAAAUAAAAGAAwAAgAIAAYAAAAFAAIAAgAIAAYAAAAVAAsAAgAIAAYAAAAQAAwAAgAGAAcAAAAOAAAAAgAGAAcAAAAVAAIAAgAIAAYAAAATAAAAAgAGAAcAAAAWAAEAAgAAAAEAAAAYAAMAAgAAAAEAAAAIAAMAAgAAAAEAAAAEAA0AAgAAAAEAAAATAA0AAgAAAAEAAAANAAIAAgAFAAAAAAAJAAwAAgAFAAAAAAAYAAkAAgAFAAAAAAABAAgAAgAFAAAAAAAJAAUAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_7b30a")
 
-[node name="player" parent="." instance=ExtResource("4_aw1le")]
+[node name="player" parent="." instance=ExtResource("6_ekdrx")]
 position = Vector2(13, 36)
 
 [node name="collisions" type="StaticBody2D" parent="."]
@@ -183,25 +183,25 @@ polygon = PackedVector2Array(0, -1, 188, -1, 189, -1, 189, -30, 225, -30, 225, -
 position = Vector2(207, -15)
 shape = SubResource("RectangleShape2D_j7sr1")
 
-[node name="rock" parent="." instance=ExtResource("7_4epay")]
+[node name="rock" parent="." instance=ExtResource("7_2bq5p")]
 position = Vector2(187, 101)
 
-[node name="rock2" parent="." instance=ExtResource("7_4epay")]
+[node name="rock2" parent="." instance=ExtResource("7_2bq5p")]
 position = Vector2(258, 133)
 
 [node name="cliffside_entrance" type="Marker2D" parent="."]
 position = Vector2(207, 0)
 
-[node name="ShopKeeper" parent="." instance=ExtResource("8_ci7yc")]
+[node name="ShopKeeper" parent="." instance=ExtResource("8_am6y6")]
 position = Vector2(44, 62)
 
-[node name="Storage" parent="." instance=ExtResource("9_xswum")]
+[node name="Storage" parent="." instance=ExtResource("9_qejlu")]
 position = Vector2(126, 151)
 
-[node name="Storage2" parent="." instance=ExtResource("9_xswum")]
+[node name="Storage2" parent="." instance=ExtResource("9_qejlu")]
 position = Vector2(334, 113)
 
-[node name="MagicTeapot" parent="." instance=ExtResource("10_0j3dg")]
+[node name="MagicTeapot" parent="." instance=ExtResource("10_p3615")]
 position = Vector2(201, 150)
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
